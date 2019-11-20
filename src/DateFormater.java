@@ -1,6 +1,7 @@
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.Date;
 
 public class DateFormater {
@@ -51,5 +52,33 @@ public class DateFormater {
 		}
 
 		return date2;
+	}
+	
+	public String stringDateCurrentTimeToStringDateFormater(String givenDate, String givenDatePattern, 
+			String timePattern, String strRetrunDatePattern) {
+
+		String dateAsString = "";
+		
+		Date time = new Date();
+		DateFormat df3 = new SimpleDateFormat(timePattern);
+		String currTime = df3.format(time);
+		
+		String fullDate = givenDate+" "+currTime;
+		String fullDatePattern = givenDatePattern+" "+timePattern;
+		
+		
+		
+		try {
+			
+			SimpleDateFormat df = new SimpleDateFormat(fullDatePattern);
+			SimpleDateFormat df2 = new SimpleDateFormat(strRetrunDatePattern);
+			Date date = df.parse(fullDate);
+			dateAsString = df2.format(date);
+
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		return dateAsString;
 	}
 }
