@@ -5,22 +5,22 @@ public class App {
 
 	public static void main(String[] args) throws ParseException {
 		
-		String newDate;
-		Date nDate;
+		String strDate;
+		Date date;
 		
-		DateFormater date = new DateFormater();
+		CustomDateFormater cdf = new CustomDateFormater();
 		
-		newDate = date.dateToStringConverter(new Date(), "yyyy-MM-dd hh:mm:ss a");
-		System.out.println(newDate);
+		strDate = cdf.dateToString(new Date(), "yyyy-MM-dd");
+		System.out.println(strDate);
 		
-		nDate = date.stringDateToDateConverter("04-02-2019", "yyyy-MM-dd");
-		System.out.println(nDate);
+		date = cdf.stringToDate("25-02-2019", "dd-MM-yyyy");
+		System.out.println(date);
 		
-		newDate = date.stringDateToStringDateFormater("04 Aug 2019", "dd MMM yyyy", "yyyy-MM-dd hh:mm:ss a");
-		System.out.println(newDate);
+		strDate = cdf.stringToString("04 Aug 2019", "dd MMM yyyy", "MMM dd, yyyy");
+		System.out.println(strDate);
 		
-		newDate = date.stringDateCurrentTimeToStringDateFormater("04 Aug 2019", "dd MMM yyyy", "hh:mm:ss a", "yyyy-MM-dd hh:mm:ss a");
-		System.out.println(newDate);
+		strDate = cdf.strCusDateCurTimeToStrDateTime("04 Aug 2019", "dd MMM yyyy", "hh:mm:ss a", "yyyy-MM-dd hh:mm:ss a");
+		System.out.println(strDate);
 
 	}
 
